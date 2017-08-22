@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = function(app) {
     
       app.get("/home", function(req, res) {
@@ -15,5 +17,14 @@ module.exports = function(app) {
       // If no matching route is found default to home
       app.get("*", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/home.html"));
+      });
+
+      //serving json data for api calls on page
+      app.get("/api/tables", function(req, res){
+        res.json(path.join(__dirname, "../data/tables.js"))
+      });
+
+      app.get("/api/waitlist", function(req, res){
+        res.json(path.join(__dirname, "../data/waitlist.js"))
       });
     };
