@@ -17,20 +17,14 @@ module.exports = (function() {
 
         //If there is space add party to reservations (tables.json)
         if(tables.length < 5){
-            console.log(`Added ${myObj.name} to tables`);
+            console.log(`Added ${myObj.name} to tables at spot #${tables.length+1}`);
             tables.push(myObj);
         }else{
-            console.log(`Added ${myObj.name} to wait list`);
+            console.log(`Added ${myObj.name} to wait list at spot #${waitList.length+1}`);
             waitList.push(myObj);
         }
-
-        
-
-        tables.push( myObj );
-
-        console.log(tables);
     
-        res.send(tables, waitList);
+        res.send([tables, waitList]);
     });
 
     return api;
