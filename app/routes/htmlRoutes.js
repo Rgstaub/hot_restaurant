@@ -18,11 +18,6 @@ module.exports = (function() {
       app.get("/make", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/make.html"));
       });
-    
-      // If no matching route is found default to home
-      app.get("*", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/home.html"));
-      });
 
       //serving json data for api calls on page
       app.get("/api/tables", function(req, res){
@@ -31,6 +26,11 @@ module.exports = (function() {
 
       app.get("/api/waitlist", function(req, res){
         res.json(waitlist)
+      });
+
+      // If no matching route is found default to home
+      app.get("*", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/home.html"));
       });
 
       return app;
