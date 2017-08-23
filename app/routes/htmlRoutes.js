@@ -26,19 +26,11 @@ module.exports = (function() {
 
       //serving json data for api calls on page
       app.get("/api/tables", function(req, res){
-<<<<<<< HEAD
-        res.json(path.join(__dirname, "/../data/tables.js"))
-      });
-
-      app.get("/api/waitlist", function(req, res){
-        res.json(path.join(__dirname, "/../data/waitlist.js"))
-=======
         res.json(tables)
       });
 
       app.get("/api/waitlist", function(req, res){
         res.json(waitlist)
->>>>>>> b358fce80340c56c663db40c95103fc6316528b5
       });
 
       return app;
