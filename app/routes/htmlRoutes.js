@@ -1,7 +1,10 @@
+var express = require('express');
 var path = require('path');
 
-module.exports = function(app) {
+module.exports = (function() {
     
+      var app = express.Router();
+
       app.get("/home", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/home.html"));
       });
@@ -27,4 +30,7 @@ module.exports = function(app) {
       app.get("/api/waitlist", function(req, res){
         res.json(path.join(__dirname, "../data/waitlist.js"))
       });
-    };
+
+      return app;
+
+    })();
