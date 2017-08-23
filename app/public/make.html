@@ -37,6 +37,7 @@
     var postUrl = "/api/new/";
     var values = {};
     $('#submit-button').click(function() {
+      event.preventDefault();
       values.name = $('#name-input').val();
       values.phone = $('#phone-input').val();
       reserve();
