@@ -1,7 +1,8 @@
 var express = require('express');
-var tableFile = __dirname + '/../data/tables.json'
-var waitlistFile = __dirname + '/../data/waitList.json'
+
 var tables = require('../data/tables.js');
+var waitList = require('../data/waitList.js');
+
 
 module.exports = (function() {
     // 'use strict';
@@ -9,22 +10,27 @@ module.exports = (function() {
 
     api.post("/new", function(req, res) {
        
-        //Get the tables
-
-        //If there is space add party to reservations (tables.json)
-
-        //If not 
-
         var myObj = {
             name: req.body.name,
             phone: req.body.phone
         }
 
+        //If there is space add party to reservations (tables.json)
+        if(tables.length < 5){
+            console.log(`Added ${myObj.name} to tables`);
+            tables.push(myObj);
+        }else{
+            console.log(`Added ${myObj.name} to wait list`);
+            waitList.push(myObj);
+        }
+
+        
+
         tables.push( myObj );
 
         console.log(tables);
     
-        res.send(req.body);
+        res.send(tables, waitList);
     });
 
     return api;
