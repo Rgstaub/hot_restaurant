@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var tables = require('../data/tables.js');
-var waitlist = require('../data/waitlist.js');
+var waitlist = require('../data/waitList.js');
 
 module.exports = (function() {
     
