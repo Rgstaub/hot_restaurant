@@ -21,19 +21,13 @@
     <div class="card-header">
       Reservations
     </div>
-    <div class="card-block">
-      <h4 class="card-title">[Name]</h4>
-      <p class="card-text">[Phone]</p>
-    </div>
+
   </div>
   <div class="card" id="wait-list">
     <div class="card-header">
       Wait List
     </div>
-    <div class="card-block">
-      <h4 class="card-title">[Name]</h4>
-      <p class="card-text">[Phone]</p>
-    </div>
+
   </div>
 </div>
 
@@ -41,8 +35,9 @@
   <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script>
-    var url = "http://localhost:3000/api/tables"
-    $.get(url, function(data) {
+    var urlTables = "/api/tables"
+    var urlWaitlist = "/api/waitlist"
+    $.get(urlTables, function(data) {
       console.log(data);
       data.forEach(function(table) {
         var wrap = $('<div class="card-block"></div');
@@ -52,6 +47,16 @@
         $('#reservation-list').append(wrap);
       })
     })
+    $.get(urlWaitlist, function(data) {
+      console.log(data);
+      data.forEach(function(table) {
+        var wrap = $('<div class="card-block"></div');
+        var name = $(`<h4>${table.name}</h4>`);
+        var phone = $(`<p>${table.phone}</p>`);
+        wrap.append(name).append(phone);
+        $('#wait-list').append(wrap);
+      })
+    })    
   </script>
 </body>
 </html>
