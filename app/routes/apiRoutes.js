@@ -30,7 +30,7 @@ module.exports = (function() {
 
         console.log(tables);
     
-        res.send(req.body);
+        res.send(tables, waitList);
     });
 
     return api;
