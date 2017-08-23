@@ -44,6 +44,13 @@
     var url = "http://localhost:3000/api/tables"
     $.get(url, function(data) {
       console.log(data);
+      data.forEach(function(table) {
+        var wrap = $('<div class="card-block"></div');
+        var name = $(`<h4>${table.name}</h4>`);
+        var phone = $(`<p>${table.phone}</p>`);
+        wrap.append(name).append(phone);
+        $('#reservation-list').append(wrap);
+      })
     })
   </script>
 </body>
